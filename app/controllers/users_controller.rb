@@ -13,9 +13,12 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-  def create
+  def create #######
     @user = User.create(user_params)
     render json: @user
+    # if @user = User.authenticate(params[:username], params[:password_digest])
+    #   session[:current_user_id] = user.id
+    # end
   end
 
   def update

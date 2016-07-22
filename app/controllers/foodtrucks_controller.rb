@@ -3,7 +3,7 @@ class FoodtrucksController < ApplicationController
   before_action :authenticate_via_token, except: [:create, :update, :destroy]
 
   def index
-    foodtrucks = Foodtruck.order(votes_count: :DESC).page(params[:page])
+    foodtrucks = Foodtruck.order(vote_count: :DESC).page(params[:page])
     render json: foodtrucks
   end
 
@@ -40,6 +40,11 @@ class FoodtrucksController < ApplicationController
     render json: { message: "Not found", status: 404 }, status: 404
   end
 
+  def vote ## allows user to vote
+    @foodtruck = Foodtruck.find(params[:id])
+    @foodtruck.votes.build(vote_params)
+  end
+
   private
   def get_foodtruck
     @foodtruck = Foodtruck.find(params.fetch(:id))
@@ -53,4 +58,8 @@ class FoodtrucksController < ApplicationController
     "http://www.yelp.com/biz/#{params[:foodtruck][:name].gsub(/\s/, '-').gsub(/[']/, '')}-austin"
   end
 
+  def vote_params
+    params.require(:vote).permit(:user_id)
+    ## I think front-end just needs to have a checkbox where if it's true then vote_count + 1.
+  end
 end
