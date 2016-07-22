@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :get_user, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user!, except: [:create, :update, :destroy]
 
   def index
     users = User.page(params[:page])

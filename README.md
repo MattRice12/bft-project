@@ -5,6 +5,10 @@ https://warm-brook-49316.herokuapp.com/
 ##Displays first 3 Food Trucks
 https://warm-brook-49316.herokuapp.com/foodtrucks
 
+##Displays second 3 Food Trucks
+https://warm-brook-49316.herokuapp.com/foodtrucks?page=2
+
+
 ##Displays specific Food Truck
 https://warm-brook-49316.herokuapp.com//foodtrucks/1
 
@@ -28,12 +32,7 @@ https://warm-brook-49316.herokuapp.com/users/1
 
 
 
-
-
-####Problems:
-Can't get rails_admin to work
-Can't get my create foodtrucks or users to work anymore
-
-
 ####TODO:
+Authentication
+Create the ability to like trucks
 Work on error messages

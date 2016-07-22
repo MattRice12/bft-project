@@ -32,21 +32,24 @@ cuisine = ["Thai",          #0
            "Creole"         #11
           ]
 
-# yelp_truck = foodtrucks[1].join("-")
-
 signature_item = ["tacos"]
-# "http://www.yelp.com/biz/#{}-austin"
 
 truck_pic = "http://www.hotwallpapersforfree.com/images/thumb/Cute-Taco-Wallpaper-Taco-cat-64078.jpg"
 
-yelp_url = "http://www.yelp.com/biz/brunch-haus-austin"
+Foodtruck.create!(name: foodtrucks[0], cuisine: cuisine[10], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[0].gsub(/\s/, '-')}-austin")
 
-Foodtruck.create!(name: foodtrucks[0], cuisine: cuisine[10], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: yelp_url)
-Foodtruck.create!(name: foodtrucks[1], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: yelp_url)
-Foodtruck.create!(name: foodtrucks[2], cuisine: cuisine[9], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: yelp_url)
-Foodtruck.create!(name: foodtrucks[3], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: yelp_url)
-Foodtruck.create!(name: foodtrucks[4], cuisine: cuisine[6], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: yelp_url)
-Foodtruck.create!(name: foodtrucks[5], cuisine: cuisine[0], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: yelp_url)
-Foodtruck.create!(name: foodtrucks[6], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: yelp_url)
-Foodtruck.create!(name: foodtrucks[7], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: yelp_url)
-Foodtruck.create!(name: foodtrucks[8], cuisine: cuisine[11], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: yelp_url)
+Foodtruck.create!(name: foodtrucks[1], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[1].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[2], cuisine: cuisine[9], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[2].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[3], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[3].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[4], cuisine: cuisine[6], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[4].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[5], cuisine: cuisine[0], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[5].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[6], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[6].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[7], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[7].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[8], cuisine: cuisine[11], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[8].gsub(/\s/, '-')}-austin")
