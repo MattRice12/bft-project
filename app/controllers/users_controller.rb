@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  before_action :get_users
+
   def index
     @users = User.all
+  
   end
 
   def show
@@ -26,19 +29,7 @@ class UsersController < ApplicationController
     @users = User.find(params[:id])
   end
 
-  def foodtruck_params
+  def user_params
     params.require(:user).permit(:name, :username, :password_digest)
   end
 end
-
-
-
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "favorites"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end

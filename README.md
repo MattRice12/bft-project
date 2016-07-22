@@ -1,24 +1,20 @@
-# README
+##Displays first 10 Food Trucks
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+##Displays specific Food Truck
+  ##epic --> show 5 users who also liked this truck
 
-* Ruby version
 
-* System dependencies
+##Displays all Users (ordered by top voters the most)
 
-* Configuration
 
-* Database creation
+##Displays specific User (w/ info: name, username, also_likes: [...])
 
-* Database initialization
 
-* How to run the test suite
+##Displays Sign Up page
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+##Displays Sign In page
 
-* ...
+
+##Users are restricted from doing anything except viewing the main Food Truck list

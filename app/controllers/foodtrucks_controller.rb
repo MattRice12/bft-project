@@ -1,4 +1,6 @@
 class FoodtrucksController < ApplicationController
+  before_action :get_foodtruck, only: [:show, :update, :destroy]
+
   def index
     @foodtrucks = Foodtruck.all
     if page && total_pages(3) <= @foodtrucks.count #checks if there is a page action and counts if the number of food trucks is greater than the item limit per page(3) times the page number.
@@ -11,7 +13,6 @@ class FoodtrucksController < ApplicationController
   end
 
   def show
-    @foodtruck = get_foodtruck
     render json: @foodtruck
   end
 
@@ -21,13 +22,11 @@ class FoodtrucksController < ApplicationController
   end
 
   def update
-    get_foodtruck
     @foodtruck.update(foodtruck_params)
     render json: @foodtruck
   end
 
   def destroy
-    get_foodtruck
     render json: @foodtruck.destroy
   end
 
