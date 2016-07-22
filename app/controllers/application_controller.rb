@@ -16,9 +16,9 @@ class ApplicationController < ActionController::API
     current_user.present?
   end
 
-  def authenticate_via_token
-    authenticate_or_request_with_http_token do |token, _|
-      User.find_by(auth_token: token)
-    end
-  end
+  # def authenticate_via_token
+  #   authenticate_or_request_with_http_token do |token, _|
+  #     User.find_by(auth_token: token)
+  #   end
+  # end
 end

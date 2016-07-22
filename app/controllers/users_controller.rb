@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :get_user, only: [:show, :update, :destroy]
-  before_action :authenticate_via_token, only: [:update, :destroy]
+  # before_action :authenticate_via_token, only: [:update, :destroy]
 
   def index
     users = User.page(params[:page])
