@@ -1,25 +1,27 @@
 class FoodtrucksController < ApplicationController
   def index
-    render json: Foodtruck.all
+    @foodtrucks = Foodtruck.all
+    if page && total_pages(3) <= @foodtrucks.count #checks if there is a page action and counts if the number of food trucks is greater than the item limit per page(3) times the page number.
+      render json: @foodtrucks[limit_per_page(3)], status: "200 OK"
+    else #runs if there is no page action and shows first 3 items.
+      render json: @foodtrucks[0..2], status: "200 OK"
+    end #need to figure out how to get a path for [:action] == ?page=2
+        #need to page.to_i because page is a string
   end
 
   def show
+    @foodtruck = get_foodtruck
     render json: @foodtruck
   end
 
   def create
-    foodtruck = Foodtruck.new(foodtruck_params)
-    if foodtruck.save
-      render json: foodtruck
-    else
-      render json: { message: "Invalid Input", status: 400 }, status: 400
-    end
-  end
-
-  def edit
+    @foodtruck = Foodtruck.create!(foodtruck_params)
+    render json: @foodtruck
   end
 
   def update
+    @foodtruck.update(foodtruck_params)
+    render json: @foodtruck
   end
 
   def destroy
@@ -27,10 +29,28 @@ class FoodtrucksController < ApplicationController
 
   private
   def get_foodtruck
-    @foodtruck = Foodtruck.find(params[:id])
+    Foodtruck.find(params.fetch(:id))
   end
 
   def foodtruck_params
-    params.require(:foodtruck).permit(:name, :cuisine, :signature_item, :truck_pic, :yelp_url)
+    params_hash = params
+    foodtruck_hash = Hash.new
+    foodtruck_hash = foodtruck_hash.merge(name: params_hash[:name]) if params_hash[:name]
+    foodtruck_hash = foodtruck_hash.merge(cuisine: params_hash[:cuisine]) if params_hash[:cuisine]
+    foodtruck_hash = foodtruck_hash.merge(signature_item: params_hash[:signature_item]) if params_hash[:signature_item]
+    foodtruck_hash = foodtruck_hash.merge(truck_pic: params_hash[:truck_pic]) if params_hash[:truck_pic]
+    foodtruck_hash = foodtruck_hash.merge(yelp_url: params_hash[:yelp_url]) if params_hash[:yelp_url]
+  end
+
+  def page
+    params[:page]
+  end
+
+  def total_pages(n)
+    page.to_i * n
+  end
+
+  def limit_per_page(n)
+    ((page.to_i - 1) * n)..((page.to_i * n) - 1)
   end
 end
