@@ -32,7 +32,10 @@ cuisine = ["Thai",          #0
            "Creole"         #11
           ]
 
+# yelp_truck = foodtrucks[1].join("-")
+
 signature_item = ["tacos"]
+# "http://www.yelp.com/biz/#{}-austin"
 
 truck_pic = "http://www.hotwallpapersforfree.com/images/thumb/Cute-Taco-Wallpaper-Taco-cat-64078.jpg"
 
