@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create!(user_params)
+    @user = User.create(user_params)
     render json: @user
   end
 
@@ -31,11 +31,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params_hash = params
-    user_hash = Hash.new
-    user_hash = user_hash.merge(name: params_hash[:name])
-    user_hash = user_hash.merge(username: params_hash[:username])
-    user_hash = user_hash.merge(password_digest: params_hash[:password_digest])
-    user_hash = user_hash.merge(favorites: params_hash[:favorites])
+    params.require(:user).permit(:name, :username, :password_digest, :favorites)
   end
 end
