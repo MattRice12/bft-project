@@ -48,7 +48,9 @@ names = %w(
   James
 )
 
-
+names.each do |name|
+  User.create!(name: name, username: "#{name}1", password: "password")
+end
 
 Foodtruck.create!(name: foodtrucks[0], cuisine: cuisine[10], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[0].gsub(/\s/, '-')}-austin")
 

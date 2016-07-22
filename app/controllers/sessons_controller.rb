@@ -10,3 +10,4 @@ class SessionsController < ApplicationController
       render json: { message: "Username or Password were incorrect." }, status: 401
     end
   end
+end
