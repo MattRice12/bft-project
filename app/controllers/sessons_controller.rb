@@ -1,24 +1,21 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:sign_in, :create]
+  before_action :authenticate_via_token, only: [:sign_in, :create]
 
   def sign_in
   end
 
-  def create
-    user = User.find_by(username: params[:username])
+  def authenticate
+    user = User.find_by(username: params.fetch(:username))
 
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      #flash[:notice] = "Successfully signed in!"
-      redirect_to foodtrucks_path ##where do I want this to redirect to?
+    if user && user.authenticate(params.fetch(:password_digest))
+      render json: { auth_token: user.auth_token }
     else
-      #flash[:alert] = "Username and password did not match any records"
-      render :sign_in
+      render json: { message: "Username or Password were incorrect." }, status: 401
     end
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:auth_token] = nil
     #flash[:notice] = "Signed out!"
     render_to sign_in_path
   end

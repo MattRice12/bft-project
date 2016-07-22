@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :get_user, only: [:show, :update, :destroy]
-  skip_before_action :authenticate_user!, except: [:create, :update, :destroy]
+  before_action :authenticate_via_token, only: [:update, :destroy]
 
   def index
     users = User.page(params[:page])
@@ -33,5 +34,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :username, :password_digest, :favorites)
+  end
+
+  protected
+  def authenticate_via_token
+    authenticate_or_request_with_http_token do |token, _|
+      User.find_by(auth_token: token)
+    end
   end
 end

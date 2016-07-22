@@ -1,32 +1,43 @@
 class FoodtrucksController < ApplicationController
   before_action :get_foodtruck, only: [:show, :update, :destroy]
-  skip_before_action :authenticate_user!, except: [:create, :update, :destroy]
+  before_action :authenticate_via_token, except: [:create, :update, :destroy]
 
   def index
-    foodtrucks = Foodtruck.page(params[:page])
+    foodtrucks = Foodtruck.order(votes_count: :DESC).page(params[:page])
     render json: foodtrucks
-    # in views call <%= paginate @foodtrucks %>
   end
 
   def show
     render json: @foodtruck
+  rescue ActiveRecord::RecordNotFound
+    render json: { message: "Not found", status: 404 }, status: 404
   end
 
   def create
-    @foodtruck = Foodtruck.create(foodtruck_params)
+    @foodtruck = Foodtruck.create!(foodtruck_params)
     if @foodtruck.yelp_url == nil
       @foodtruck.yelp_url = truck_yelp
     end
     render json: @foodtruck
+  rescue ActiveRecord::RecordInvalid
+    render json: { message: "Invalid Input", status: 400 }, status: 400
+  rescue ActiveRecord::RecordNotFound
+    render json: { message: "Not found", status: 404 }, status: 404
   end
 
   def update
     @foodtruck.update(foodtruck_params)
     render json: @foodtruck
+  rescue ActiveRecord::RecordInvalid
+    render json: { message: "Invalid Input", status: 400 }, status: 400
   end
 
   def destroy
     render json: @foodtruck.destroy
+    ## where does this redirect to? if anywhere? # may want to redirect it to the same page you were on.
+
+  rescue ActiveRecord::RecordNotFound
+    render json: { message: "Not found", status: 404 }, status: 404
   end
 
   private
