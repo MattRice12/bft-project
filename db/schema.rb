@@ -16,20 +16,20 @@ ActiveRecord::Schema.define(version: 20160721210624) do
   enable_extension "plpgsql"
 
   create_table "foodtrucks", force: :cascade do |t|
-    t.string   "name"
-    t.string   "cuisine"
+    t.string   "name",                       null: false
+    t.string   "cuisine",                    null: false
     t.string   "signature_item"
     t.string   "truck_pic"
     t.string   "yelp_url"
-    t.integer  "vote_count"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "vote_count",     default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "username"
-    t.string   "password_digest"
+    t.string   "name",            null: false
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
     t.string   "favorites"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
