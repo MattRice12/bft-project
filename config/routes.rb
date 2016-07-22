@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  
+
   resources :votes
   resources :users
-  resources :foodtrucks
+  resources :foodtrucks do
+    member do
+      post 'vote'
+    end
+  end
 
   root 'dashboard#index'
 

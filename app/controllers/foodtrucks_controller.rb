@@ -1,6 +1,6 @@
 class FoodtrucksController < ApplicationController
   before_action :get_foodtruck, only: [:show, :update, :destroy]
-  # before_action :authenticate_via_token, except: [:create, :update, :destroy]
+  before_action :authenticate_token, except: [:create, :update, :destroy]
 
   def index
     foodtrucks = Foodtruck.order(vote_count: :DESC).page(params[:page])

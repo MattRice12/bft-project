@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:auth_token] = nil
-    #flash[:notice] = "Signed out!"
+    flash[:notice] = "Signed out!"
     render_to sign_in_path
   end
 

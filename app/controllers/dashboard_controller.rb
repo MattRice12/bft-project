@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  # before_action :authenticate_via_token, only: [:index]
+  before_action :authenticate_via_token, except: [:index]
 
   def index
     render json: Foodtruck.all
