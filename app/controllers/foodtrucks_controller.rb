@@ -3,8 +3,9 @@ class FoodtrucksController < ApplicationController
     @foodtrucks = Foodtruck.all
     if page && total_pages(3) <= @foodtrucks.count #checks if there is a page action and counts if the number of food trucks is greater than the item limit per page(3) times the page number.
       render json: @foodtrucks[limit_per_page(3)], status: "200 OK"
-    else #runs if there is no page action and shows first 3 items.
-      render json: @foodtrucks[0..2], status: "200 OK"
+    else
+      render json: @foodtrucks, status: "200 OK"
+#     render json: @foodtrucks[0..2], status: "200 OK" #runs if there is no page action and shows first 3 items.
     end #need to figure out how to get a path for [:action] == ?page=2
         #need to page.to_i because page is a string
   end
@@ -20,6 +21,7 @@ class FoodtrucksController < ApplicationController
   end
 
   def update
+    get_foodtruck
     @foodtruck.update(foodtruck_params)
     render json: @foodtruck
   end
@@ -29,7 +31,7 @@ class FoodtrucksController < ApplicationController
 
   private
   def get_foodtruck
-    Foodtruck.find(params.fetch(:id))
+    @foodtruck = Foodtruck.find(params.fetch(:id))
   end
 
   def foodtruck_params
