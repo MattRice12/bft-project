@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :authenticate_via_token, only: [:sign_in, :create]
+  # before_action :authenticate_via_token, only: [:sign_in, :create]
 
   def sign_in
   end

@@ -16,10 +16,9 @@ class ApplicationController < ActionController::API
     current_user.present?
   end
 
-  def authenticate_user!
-    if session[:user_id].nil?
-      flash[:alert] = "You must be signed in to do that."
-      redirect_to sign_in_path
+  def authenticate_via_token
+    authenticate_or_request_with_http_token do |token, _|
+      User.find_by(auth_token: token)
     end
   end
 end
