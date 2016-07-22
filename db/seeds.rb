@@ -36,6 +36,20 @@ signature_item = ["tacos"]
 
 truck_pic = "http://www.hotwallpapersforfree.com/images/thumb/Cute-Taco-Wallpaper-Taco-cat-64078.jpg"
 
+names = %w(
+  Dane
+  Justin
+  Matt
+  Rob
+  Kate
+  Ahkeem
+  Coop
+  Amanda
+  James
+)
+
+
+
 Foodtruck.create!(name: foodtrucks[0], cuisine: cuisine[10], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[0].gsub(/\s/, '-')}-austin")
 
 Foodtruck.create!(name: foodtrucks[1], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[1].gsub(/\s/, '-')}-austin")
