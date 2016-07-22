@@ -27,6 +27,8 @@ class FoodtrucksController < ApplicationController
   end
 
   def destroy
+    get_foodtruck
+    render json: @foodtruck.destroy
   end
 
   private
