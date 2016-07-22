@@ -27,7 +27,7 @@ class FoodtrucksController < ApplicationController
 
   private
   def get_foodtruck
-    @foodtruck = Foodtruck.find(params.fetch(:id))
+    @foodtruck = Foodtruck.find(params[:id])
   end
 
   def foodtruck_params
