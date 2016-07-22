@@ -19,7 +19,7 @@ foodtrucks = ["ATX Boudain Hut",        #0
               ]
 
 cuisine = ["Thai",          #0
-           "Dessert",        #1
+           "Dessert",       #1
            "Italian",       #2
            "Seafood",       #3
            "Brunch",        #4
