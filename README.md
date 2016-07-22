@@ -18,3 +18,14 @@
 
 
 ##Users are restricted from doing anything except viewing the main Food Truck list
+
+
+
+
+
+####Problems:
+Can't get rails_admin to work
+
+
+####TODO:
+Work on error messages
