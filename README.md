@@ -25,6 +25,7 @@
 
 ####Problems:
 Can't get rails_admin to work
+Can't get my create foodtrucks or users to work anymore
 
 
 ####TODO:
