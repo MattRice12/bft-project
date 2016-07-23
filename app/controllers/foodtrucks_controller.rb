@@ -3,14 +3,14 @@ class FoodtrucksController < ApplicationController
   # before_action :authenticate_token, only: [:create, :update, :destroy]
 
   def index
-    foodtrucks = Foodtruck.order(vote_count: :DESC).page(params[:page])
-    render json: foodtrucks
+    foodtrucks = Foodtruck.top.page(params[:page])
+    render json: foodtrucks.to_json(include: :votes)
   end
 
   def show
     render json: @foodtruck
-  rescue ActiveRecord::RecordNotFound
-    render json: { message: "Not found", status: 404 }, status: 404
+  # rescue ActiveRecord::RecordNotFound
+  #   render json: { message: "Not found", status: 404 }, status: 404
   end
 
   def create
@@ -18,31 +18,43 @@ class FoodtrucksController < ApplicationController
     if @foodtruck.yelp_url == nil
       @foodtruck.yelp_url = truck_yelp
     end
+    # if @foodtruck.truck_pic == nil
+      # @foodtruck.truck_pic =
+    # end
     render json: @foodtruck
-  rescue ActiveRecord::RecordInvalid
-    render json: { message: "Invalid Input", status: 400 }, status: 400
-  rescue ActiveRecord::RecordNotFound
-    render json: { message: "Not found", status: 404 }, status: 404
+  # rescue ActiveRecord::RecordInvalid
+  #   render json: { message: "Invalid Input", status: 400 }, status: 400
+  # rescue ActiveRecord::RecordNotFound
+  #   render json: { message: "Not found", status: 404 }, status: 404
   end
 
   def update
     @foodtruck.update(foodtruck_params)
     render json: @foodtruck
-  rescue ActiveRecord::RecordInvalid
-    render json: { message: "Invalid Input", status: 400 }, status: 400
+  # rescue ActiveRecord::RecordInvalid
+  #   render json: { message: "Invalid Input", status: 400 }, status: 400
   end
 
   def destroy
-    render json: @foodtruck.destroy
-    ## where does this redirect to? if anywhere? # may want to redirect it to the same page you were on.
+    foodtruck = Foodtruck.find(params[:id])
+    if foodtruck
+      if authenticate_token?(params.fetch(browser_auth_token))
+        render json: foodtruck.destroy
+        render json: "Foodtruck deleted."
+      else
+        render json: { message: "You are not authorized to do this." }, status: 401
+      end
+    else
+      render json: { message: "This foodtruck does not exist." }
+    end
 
-  rescue ActiveRecord::RecordNotFound
-    render json: { message: "Not found", status: 404 }, status: 404
+  # rescue ActiveRecord::RecordNotFound
+  #   render json: { message: "Not found", status: 404 }, status: 404
   end
 
-  def vote ## allows user to vote
-    @foodtruck = Foodtruck.find(params[:id])
-    @foodtruck.votes.build(vote_params)
+  def voting_users
+    user_arr = get_users_for_vote
+    render json: user_arr.to_json(except: [:name, :username, :password_digest])
   end
 
   private
@@ -56,10 +68,5 @@ class FoodtrucksController < ApplicationController
 
   def truck_yelp
     "http://www.yelp.com/biz/#{params[:foodtruck][:name].gsub(/\s/, '-').gsub(/[']/, '')}-austin"
-  end
-
-  def vote_params
-    params.require(:vote).permit(:user_id)
-    ## I think front-end just needs to have a checkbox where if it's true then vote_count + 1.
   end
 end

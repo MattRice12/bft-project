@@ -7,34 +7,121 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-foodtrucks = ["ATX Boudain Hut",        #0
-              "Cow Tipping Creamery",   #1
-              "Scotty's BBQ",           #2
-              "Bananarchy",             #3
-              "Torchy's Tacos",         #4
-              "East Side Kings",        #5
-              "Hey Cupcake!",           #6
-              "Gourdoughs",             #7
-              "Baton Creole"            #8
+
+################### Stock USERS ##################
+
+
+###################################################
+
+
+################## Stock FOODTRUCKS ################
+
+
+ITALIAN = ["http://viztangocafe.com/wp-content/uploads/2015/06/food2.jpg"]
+CHINESE = ["http://www.kowloonnc.com/resources/img/backgrounds/chinese_2.jpg"]
+THAI = ["http://thethaichili.net/site/wp-content/uploads/2013/05/pad-thai.jpg"]
+GREEK = ["https://www.hungerpass.com/wp-content/uploads/2016/02/greekcove4.jpg"]
+MEXICAN = [ "http://img2.timeinc.net/people/i/2016/greatideas/blog/160118/tacos-600x800.jpg"]
+AMERICAN = ["https://eat24-files-live.s3.amazonaws.com/cuisines/v4/american.jpg?Signature=n3MLwp7EPu5yKsJg9Ffyd8UOgpI%3D&Expires=1469292486&AWSAccessKeyId=AKIAIEJ2GCCJRT63TBYA"]
+LATIN = ["http://www.seriouseats.com/images/2013/09/20130831-huevos-rancheros-breakfast-tacos-recipe-2.jpg"]
+DESSERT = ["http://static.oprah.com/images/o2/201208-omag-cones-949x534.jpg"]
+VEGAN = ["http://cdn.everything.io/vegankit/images/veggies.jpg"]
+VEGETARIAN = ["http://www.internationalsupermarketnews.com/wp-content/uploads/2016/02/vegetarian-food.jpg"]
+BRUNCH = ["https://blog.vegas.com/wp-content/uploads/2015/09/Brunch-Border-Grill1.jpg"]
+COFFEE = ["http://genechanger.com/wp-content/uploads/2015/01/Coffee-and-Tea.jpg"]
+CUBAN = ["http://www.nationalturk.com/en/wp-content/uploads/2011/07/Cuban-Food-Culture-cuisine-nationalturk-24576.jpg"]
+VIETNAMESE = ["http://epicureandculture.com/wp-content/uploads/2015/09/shutterstock_204875356.jpg"]
+GLUTENFREE = ["http://deliciousliving.com/site-files/newhope360.com/files/uploads/2011/09/91253417.jpg"]
+CAIJUN = ["https://s-media-cache-ak0.pinimg.com/564x/32/23/94/3223944ababf5628d6877cbfa3ef8ba9.jpg"]
+BBQ = ["https://pantograph0.goldbely.com/cfill-h267-w575/uploads/merchant/main_image/487/kings-bbq.b1786196c4146d4d843f2ff073ba03ee.jpg"]
+BANANARCHY = ["http://tastytouring.com/wp-content/uploads/2010/05/bananas.JPG"]
+HEYCUPCAKE = ["https://activerain-store.s3.amazonaws.com/image_store/uploads/3/2/1/7/2/ar126376850627123.jpg"]
+GORDOUGHS = ["http://www.atxfoodnews.com/wp-content/uploads/2013/01/iPhone-jan-2013-113.jpg"]
+CREOLE = ["http://cdn.phillymag.com/wp-content/uploads/2013/09/carmines-creole-cafe-act-ii-shrimp-crawfish-etouffee.jpg"]
+OTHER = ["http://www.hotwallpapersforfree.com/images/thumb/Cute-Taco-Wallpaper-Taco-cat-64078.jpg"]
+
+truck_type = [["italian", ITALIAN],         #0
+              ["chinese", CHINESE],         #1
+              ["thai", THAI],               #2
+              ["greek", GREEK],             #3
+              ["mexican", MEXICAN],         #4
+              ["american", AMERICAN],       #5
+              ["latin", LATIN],             #6
+              ["dessert", DESSERT],         #7
+              ["vegan", VEGAN],             #8
+              ["vegetarian", VEGETARIAN],   #9
+              ["brunch", BRUNCH],           #10
+              ["coffee/tea", COFFEE],       #11
+              ["cuban", CUBAN],             #12
+              ["Vietnamese", VIETNAMESE],   #13
+              ["Gluten Free", GLUTENFREE],  #14
+              ["Other", OTHER]              #15
               ]
 
-cuisine = ["Thai",          #0
-           "Dessert",       #1
-           "Italian",       #2
-           "Seafood",       #3
-           "Brunch",        #4
-           "Southern",      #5
-           "Mexican",       #6
-           "Dessert",       #7
-           "American",      #8
-           "BBQ",           #9
-           "Caijun",        #10
-           "Creole"         #11
-          ]
+foodtrucks = [["ATX Boudain Hut", "Boudain Balls"],       #0
+             ["Cow Tipping Creamery", "Soft Serve"],      #1
+             ["Scotty's BBQ", "Brisket"],                 #2
+             ["Bananarchy", "Chocolate Covered Bananas"], #3
+             ["Torchy's Tacos", "The American"],          #4
+             ["East Side Kings", "Beet Home Fries"],      #5
+             ["Hey Cupcake!", "Cupcakes"],                #6
+             ["Gourdoughs", "Donuts"],                    #7
+             ["Baton Creole", "Jambalaya Baton"]          #8
+            ]
 
-signature_item = ["tacos"]
+Foodtruck.create!(name: foodtrucks[0][0],
+                  cuisine: truck_type[15][0],
+                  signature_item: foodtrucks[0][1],
+                  truck_pic: truck_type[15][1],
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[0][0].gsub(/\s/, '-')}-austin")
 
-truck_pic = "http://www.hotwallpapersforfree.com/images/thumb/Cute-Taco-Wallpaper-Taco-cat-64078.jpg"
+Foodtruck.create!(name: foodtrucks[1][0],
+                  cuisine: truck_type[7][0],
+                  signature_item: foodtrucks[1][1],
+                  truck_pic: truck_type[7][0],
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[1][0].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[2][0],
+                  cuisine: truck_type[5][0],
+                  signature_item: foodtrucks[2][0],
+                  truck_pic: truck_type[2][1],
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[2][0].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[3][0],
+                  cuisine: truck_type[7][0],
+                  signature_item: foodtrucks[3][0],
+                  truck_pic: truck_type[7][0],
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[3][0].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[4][0],
+                  cuisine: truck_type[4][0],
+                  signature_item: foodtrucks[4][1],
+                  truck_pic: truck_type[4][1],
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[4][0].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[5][0],
+                  cuisine: truck_type[2][0],
+                  signature_item: foodtrucks[5][1],
+                  truck_pic: truck_type[2][1],
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[5][0].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[6][0],
+                  cuisine: truck_type[7][0],
+                  signature_item: foodtrucks[6][1],
+                  truck_pic: truck_type[7][1],
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[6][0].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[7][0],
+                  cuisine: truck_type[5][0],
+                  signature_item: foodtrucks[7][1],
+                  truck_pic: truck_type[5][1],
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[7][0].gsub(/\s/, '-')}-austin")
+
+Foodtruck.create!(name: foodtrucks[8][0],
+                  cuisine: truck_type[15][0],
+                  signature_item: foodtrucks[8][1],
+                  truck_pic: truck_type[15][1],
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[8][0].gsub(/\s/, '-')}-austin")
 
 names = %w(
   Dane
@@ -51,21 +138,3 @@ names = %w(
 names.each do |name|
   User.create!(name: name, username: "#{name}1", password: "password")
 end
-
-Foodtruck.create!(name: foodtrucks[0], cuisine: cuisine[10], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[0].gsub(/\s/, '-')}-austin")
-
-Foodtruck.create!(name: foodtrucks[1], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[1].gsub(/\s/, '-')}-austin")
-
-Foodtruck.create!(name: foodtrucks[2], cuisine: cuisine[9], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[2].gsub(/\s/, '-')}-austin")
-
-Foodtruck.create!(name: foodtrucks[3], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[3].gsub(/\s/, '-')}-austin")
-
-Foodtruck.create!(name: foodtrucks[4], cuisine: cuisine[6], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[4].gsub(/\s/, '-')}-austin")
-
-Foodtruck.create!(name: foodtrucks[5], cuisine: cuisine[0], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[5].gsub(/\s/, '-')}-austin")
-
-Foodtruck.create!(name: foodtrucks[6], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[6].gsub(/\s/, '-')}-austin")
-
-Foodtruck.create!(name: foodtrucks[7], cuisine: cuisine[1], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[7].gsub(/\s/, '-')}-austin")
-
-Foodtruck.create!(name: foodtrucks[8], cuisine: cuisine[11], signature_item: signature_item[0], truck_pic: truck_pic, yelp_url: "http://www.yelp.com/biz/#{foodtrucks[8].gsub(/\s/, '-')}-austin")

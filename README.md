@@ -37,6 +37,7 @@ Authentication
 Create the ability to like trucks
 Work on error messages
 
+##FIX SEEDS BC SOME TRUCK_PICS ARE NOT SET UP RIGHT
 
 ##Add property
 comment
