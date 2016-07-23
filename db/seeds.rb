@@ -22,7 +22,7 @@ CHINESE = ["http://www.kowloonnc.com/resources/img/backgrounds/chinese_2.jpg"]
 THAI = ["http://thethaichili.net/site/wp-content/uploads/2013/05/pad-thai.jpg"]
 GREEK = ["https://www.hungerpass.com/wp-content/uploads/2016/02/greekcove4.jpg"]
 MEXICAN = [ "http://img2.timeinc.net/people/i/2016/greatideas/blog/160118/tacos-600x800.jpg"]
-AMERICAN = ["https://eat24-files-live.s3.amazonaws.com/cuisines/v4/american.jpg?Signature=n3MLwp7EPu5yKsJg9Ffyd8UOgpI%3D&Expires=1469292486&AWSAccessKeyId=AKIAIEJ2GCCJRT63TBYA"]
+AMERICAN = ["https://www.waiter.com/blog/wp-content/uploads/2015/06/hamburger.jpg"]
 LATIN = ["http://www.seriouseats.com/images/2013/09/20130831-huevos-rancheros-breakfast-tacos-recipe-2.jpg"]
 DESSERT = ["http://static.oprah.com/images/o2/201208-omag-cones-949x534.jpg"]
 VEGAN = ["http://cdn.everything.io/vegankit/images/veggies.jpg"]
@@ -84,13 +84,13 @@ Foodtruck.create!(name: foodtrucks[1][0],
 Foodtruck.create!(name: foodtrucks[2][0],
                   cuisine: truck_type[5][0],
                   signature_item: foodtrucks[2][1],
-                  truck_pic: (truck_type[2][1]).join,
+                  truck_pic: BBQ,
                   yelp_url: "http://www.yelp.com/biz/#{foodtrucks[2][0].gsub(/\s/, '-')}-austin")
 
 Foodtruck.create!(name: foodtrucks[3][0],
                   cuisine: truck_type[7][0],
                   signature_item: foodtrucks[3][1],
-                  truck_pic: (truck_type[7][1]).join,
+                  truck_pic: BANANARCHY,
                   yelp_url: "http://www.yelp.com/biz/#{foodtrucks[3][0].gsub(/\s/, '-')}-austin")
 
 Foodtruck.create!(name: foodtrucks[4][0],
@@ -108,19 +108,19 @@ Foodtruck.create!(name: foodtrucks[5][0],
 Foodtruck.create!(name: foodtrucks[6][0],
                   cuisine: truck_type[7][0],
                   signature_item: foodtrucks[6][1],
-                  truck_pic: (truck_type[7][1]).join,
+                  truck_pic: HEYCUPCAKE,
                   yelp_url: "http://www.yelp.com/biz/#{foodtrucks[6][0].gsub(/\s/, '-')}-austin")
 
 Foodtruck.create!(name: foodtrucks[7][0],
                   cuisine: truck_type[5][0],
                   signature_item: foodtrucks[7][1],
-                  truck_pic: (truck_type[5][1]).join,
+                  truck_pic: GORDOUGHS,
                   yelp_url: "http://www.yelp.com/biz/#{foodtrucks[7][0].gsub(/\s/, '-')}-austin")
 
 Foodtruck.create!(name: foodtrucks[8][0],
                   cuisine: truck_type[15][0],
                   signature_item: foodtrucks[8][1],
-                  truck_pic: (truck_type[15][1]).join,
+                  truck_pic: CREOLE,
                   yelp_url: "http://www.yelp.com/biz/#{foodtrucks[8][0].gsub(/\s/, '-')}-austin")
 
 names = %w(
