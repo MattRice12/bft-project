@@ -40,19 +40,19 @@ GORDOUGHS = ["http://www.atxfoodnews.com/wp-content/uploads/2013/01/iPhone-jan-2
 CREOLE = ["http://cdn.phillymag.com/wp-content/uploads/2013/09/carmines-creole-cafe-act-ii-shrimp-crawfish-etouffee.jpg"]
 OTHER = ["http://www.hotwallpapersforfree.com/images/thumb/Cute-Taco-Wallpaper-Taco-cat-64078.jpg"]
 
-truck_type = [["italian", ITALIAN],         #0
-              ["chinese", CHINESE],         #1
-              ["thai", THAI],               #2
-              ["greek", GREEK],             #3
-              ["mexican", MEXICAN],         #4
-              ["american", AMERICAN],       #5
-              ["latin", LATIN],             #6
-              ["dessert", DESSERT],         #7
-              ["vegan", VEGAN],             #8
-              ["vegetarian", VEGETARIAN],   #9
-              ["brunch", BRUNCH],           #10
-              ["coffee/tea", COFFEE],       #11
-              ["cuban", CUBAN],             #12
+truck_type = [["Italian", ITALIAN],         #0
+              ["Chinese", CHINESE],         #1
+              ["Thai", THAI],               #2
+              ["Greek", GREEK],             #3
+              ["Mexican", MEXICAN],         #4
+              ["American", AMERICAN],       #5
+              ["Latin", LATIN],             #6
+              ["Dessert", DESSERT],         #7
+              ["Vegan", VEGAN],             #8
+              ["Vegetarian", VEGETARIAN],   #9
+              ["Brunch", BRUNCH],           #10
+              ["Coffee/tea", COFFEE],       #11
+              ["Cuban", CUBAN],             #12
               ["Vietnamese", VIETNAMESE],   #13
               ["Gluten Free", GLUTENFREE],  #14
               ["Other", OTHER]              #15
