@@ -4,7 +4,7 @@ class FoodtrucksController < ApplicationController
 
   def index
     foodtrucks = Foodtruck.top.page(params[:page])
-    render json: foodtrucks.to_json(include: :votes)
+    render json: foodtrucks.to_json
   end
 
   def show
