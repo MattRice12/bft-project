@@ -138,3 +138,7 @@ names = %w(
 names.each do |name|
   User.create!(name: name, username: "#{name}1", password: "password")
 end
+
+100.times do
+  Vote.create!(user_id: rand(1..8), foodtruck_id: rand(1..8))
+end
