@@ -7,8 +7,9 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, length: { minimum: 1, maximum: 50 }
   validates :password, presence: true
 
-  # def favorites
-  #   Favorites.new
+  # def self.favorites
+  #   user_favorite = Votes.find_by(id: user_id)
+  #   foodtruck_stuff = Foodtruck.find_by(id: )
   # end
 
   def favorite_list

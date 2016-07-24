@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     post 'vote' => "users#vote", on: :member
   end
+
   resources :foodtrucks do
     # get "users" => "quotes#voting_users", on: :member
     post 'vote' => "foodtrucks#vote", on: :member
