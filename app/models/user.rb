@@ -14,12 +14,12 @@ class User < ApplicationRecord
     favorite_list.unique
   end
 
-  def self.top
-    joins("right join votes on votes.user_id = users.id")
-    .select("users.*")
-    .group("users.id, users.favorites")
-    .order("count(votes.id) desc")
-  end
+  # def self.top
+  #   joins("right join votes on votes.user_id = users.id")
+  #   .select("users.*")
+  #   .group("users.id, users.favorites")
+  #   .order("count(votes.id) desc")
+  # end
 
   private
   def set_auth_token #when they create a new account, it we store an authentication token for them.

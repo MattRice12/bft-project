@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :favorites
   resources :votes
 
   resources :users do
-    post 'favorites' => "users#favorites", on: :member
     post 'vote' => "users#vote", on: :member
   end
   resources :foodtrucks do

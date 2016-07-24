@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     # if authenticate_token?(params.fetch(browser_auth_token))
-      users = User.top.page(params[:page])
+      users = User.page(params[:page])
       render json: users.to_json
     # end
     # in views call <%= paginate @users %>

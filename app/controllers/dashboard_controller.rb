@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   # before_action :authenticate_token, except: [:index]
 
   def index
-    foodtrucks = Foodtruck.top.page(params[:page])
+    foodtrucks = Foodtruck.order(votes_count: :desc).page(params[:page])
     render json: foodtrucks.to_json
   end
   #
