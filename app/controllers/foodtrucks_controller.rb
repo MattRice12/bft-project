@@ -17,6 +17,8 @@ class FoodtrucksController < ApplicationController
 
   def create
     @foodtruck = Foodtruck.new(foodtruck_params)
+    user = User.find_by(auth_token: params[auth_token])
+    foodtruck.user_id = user.id
     if @foodtruck.yelp_url == nil
       @foodtruck.yelp_url = truck_yelp
     end
@@ -32,8 +34,8 @@ class FoodtrucksController < ApplicationController
 
   def update
     foodtruck = Foodtruck.find(params.fetch(:id))
-    user = User.find_by(id: session[:user_id])
-    if user.id == foodtruck.user_id
+    user = User.find_by(auth_token: params[auth_token])
+    if foodtruck.user_id == user.id
       if foodtruck.update(foodtruck_params)
         render json: foodtruck, status: 200
       else
@@ -47,9 +49,13 @@ class FoodtrucksController < ApplicationController
   def destroy
     if @foodtruck
       if authenticate_token?(params.fetch(browser_auth_token))
-        render json: @foodtruck.destroy, status: 200
+        if foodtruck.user_id == user.id
+          render json: @foodtruck.destroy, status: 200
+        else
+          render json: { message: "You are not authorized to take this action" }, status: 401
+        end
       else
-        render json: { message: "You are not authorized to do this." }, status: 401
+        render json: { message: "I'm a teapot (Log in first, dummy)" }, status: 418
       end
     else
       render json: { message: "This foodtruck does not exist." }
