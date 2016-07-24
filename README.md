@@ -1,9 +1,9 @@
-##Displays all Food Trucks
-https://warm-brook-49316.herokuapp.com/
-
-
-##Displays first 3 Food Trucks
-https://warm-brook-49316.herokuapp.com/foodtrucks
+##Show all Food Trucks, 6 per page, ordered by vote count.
+URL: https://warm-brook-49316.herokuapp.com/foodtrucks
+Method: GET
+URL actions: ?page=[page-number]
+  Example: ?page=1 shows trucks 1-6 (this action is superfluous)
+  Example: ?page=2 shows trucks 7-12
 
 ##Displays second 3 Food Trucks
 https://warm-brook-49316.herokuapp.com/foodtrucks?page=2
@@ -29,15 +29,3 @@ https://warm-brook-49316.herokuapp.com/users/1
 
 
 ##Users are restricted from doing anything except viewing the main Food Truck list
-
-
-
-####TODO:
-Authentication
-Create the ability to like trucks
-Work on error messages
-
-##FIX SEEDS BC SOME TRUCK_PICS ARE NOT SET UP RIGHT
-
-##Add property
-comment

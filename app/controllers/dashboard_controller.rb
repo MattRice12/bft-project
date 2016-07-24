@@ -5,11 +5,4 @@ class DashboardController < ApplicationController
     foodtrucks = Foodtruck.order(votes_count: :desc).page(params[:page])
     render json: foodtrucks.to_json
   end
-  #
-  # ################ For adding a 'vote_count' to the foodtruck ####
-  # def update
-  #   @foodtrucks.update(foodtruck_params)
-  #
-  #   render json:
-  # end
 end

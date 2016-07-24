@@ -5,10 +5,6 @@ class FoodtrucksController < ApplicationController
   def index
     foodtrucks = Foodtruck.order(votes_count: :desc).page(params[:page])
     render json: foodtrucks.to_json, status: 200
-
-    # @foodtrucks = Foodtruck.all
-    # render json: @foodtrucks.to_json
-
   end
 
   def show
@@ -17,8 +13,6 @@ class FoodtrucksController < ApplicationController
     else
       render json: { message: "Not Found" }, status: 404
     end
-  # rescue ActiveRecord::RecordNotFound
-  #   render json: { message: "Not found", status: 404 }, status: 404
   end
 
   def create
@@ -34,39 +28,28 @@ class FoodtrucksController < ApplicationController
     else
       render json: @foodtruck.errors
     end
-  # rescue ActiveRecord::RecordInvalid
-  #   render json: { message: "Invalid Input", status: 400 }, status: 400
-  # rescue ActiveRecord::RecordNotFound
-  #   render json: { message: "Not found", status: 404 }, status: 404
   end
 
   def update
-    @foodtruck.update(foodtruck_params)
-    render json: @foodtruck, status: 200
-  # rescue ActiveRecord::RecordInvalid
-  #   render json: { message: "Invalid Input", status: 400 }, status: 400
+    foodtruck = Foodtruck.find(params.fetch(:id))
+    if foodtruck.update(foodtruck_params)
+      render json: foodtruck, status: 200
+    else
+      render json: { message: "Invalid Input" }, status: 400
+    end
   end
 
   def destroy
-    foodtruck = Foodtruck.find(params[:id])
-    if foodtruck
+    if @foodtruck
       if authenticate_token?(params.fetch(browser_auth_token))
-        render json: foodtruck.destroy, status: 200
+        render json: @foodtruck.destroy, status: 200
       else
         render json: { message: "You are not authorized to do this." }, status: 401
       end
     else
       render json: { message: "This foodtruck does not exist." }
     end
-
-  # rescue ActiveRecord::RecordNotFound
-  #   render json: { message: "Not found", status: 404 }, status: 404
   end
-
-  # def voting_users
-  #   user_arr = get_users_for_vote
-  #   render json: user_arr.to_json(except: [:name, :username, :password_digest])
-  # end
 
   private
   def get_foodtruck
@@ -80,7 +63,6 @@ class FoodtrucksController < ApplicationController
   def truck_yelp
     "http://www.yelp.com/biz/#{params[:foodtruck][:name].gsub(/\s/, '-').gsub(/[']/, '')}-austin"
   end
-
 
   def truck_picchas
     @pics = Hash.new

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   post '/sign-in', to: "sessions#sign_in", as: :sign_in
+  post '/sign-up', to: "users#create", as: :sign_up
 
   root 'dashboard#index'
 

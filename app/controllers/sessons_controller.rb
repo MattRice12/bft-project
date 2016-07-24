@@ -15,5 +15,4 @@ class SessionsController < ApplicationController
 
   def sign_out
   end
-  
 end
