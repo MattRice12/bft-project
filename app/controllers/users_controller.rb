@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
   def index
     # if authenticate_token?(params.fetch(browser_auth_token))
-      users = User.page(params[:page])
-      render json: users
+      users = User.top.page(params[:page])
+      render json: users.to_json
     # end
     # in views call <%= paginate @users %>
   end
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-  def create 
+  def create
     @user = User.create(user_params)
     render json: @user
   end
@@ -28,12 +28,17 @@ class UsersController < ApplicationController
     render json: @user.destroy
   end
 
+  def get_favorites
+    @favorites = get_user_favorites
+    render json: @favorites
+  end
+
   private
   def get_user
     @user = User.find(params.fetch(:id))
   end
 
   def user_params
-    params.require(:user).permit(:name, :username, :password, :favorites, :auth_token)
+    params.require(:user).permit(:name, :username, :password, :auth_token)
   end
 end

@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
 
   def index
     foodtrucks = Foodtruck.top.page(params[:page])
-    render json: foodtrucks.to_json(include: :votes)
+    render json: foodtrucks.to_json
   end
   #
   # ################ For adding a 'vote_count' to the foodtruck ####

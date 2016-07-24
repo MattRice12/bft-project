@@ -140,5 +140,6 @@ names.each do |name|
 end
 
 100.times do
-  Vote.create!(user_id: rand(1..8), foodtruck_id: rand(1..8))
+  vote = Vote.new(user_id: rand(1..8), foodtruck_id: rand(1..8), favorite_list: foodtrucks[rand(1-8)][0])
+  vote.save
 end
