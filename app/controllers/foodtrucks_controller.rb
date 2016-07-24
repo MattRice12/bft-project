@@ -32,10 +32,15 @@ class FoodtrucksController < ApplicationController
 
   def update
     foodtruck = Foodtruck.find(params.fetch(:id))
-    if foodtruck.update(foodtruck_params)
-      render json: foodtruck, status: 200
+    user = User.find_by(id: session[:user_id])
+    if user.id == foodtruck.user_id
+      if foodtruck.update(foodtruck_params)
+        render json: foodtruck, status: 200
+      else
+        render json: { message: "Invalid Input" }, status: 400
+      end
     else
-      render json: { message: "Invalid Input" }, status: 400
+      render json: { message: "Backend problems, probably" }, status: 500
     end
   end
 
