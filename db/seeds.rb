@@ -73,55 +73,64 @@ Foodtruck.create!(name: foodtrucks[0][0],
                   cuisine: truck_type[15][0],
                   signature_item: foodtrucks[0][1],
                   truck_pic: (truck_type[15][1]).join,
-                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[0][0].gsub(/\s/, '-')}-austin")
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[0][0].gsub(/\s/, '-')}-austin",
+                  user_id: 8)
 
 Foodtruck.create!(name: foodtrucks[1][0],
                   cuisine: truck_type[7][0],
                   signature_item: foodtrucks[1][1],
                   truck_pic: (truck_type[7][1]).join,
-                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[1][0].gsub(/\s/, '-')}-austin")
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[1][0].gsub(/\s/, '-')}-austin",
+                  user_id: 8)
 
 Foodtruck.create!(name: foodtrucks[2][0],
                   cuisine: truck_type[5][0],
                   signature_item: foodtrucks[2][1],
                   truck_pic: BBQ.join,
-                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[2][0].gsub(/\s/, '-')}-austin")
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[2][0].gsub(/\s/, '-')}-austin",
+                  user_id: 8)
 
 Foodtruck.create!(name: foodtrucks[3][0],
                   cuisine: truck_type[7][0],
                   signature_item: foodtrucks[3][1],
                   truck_pic: BANANARCHY.join,
-                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[3][0].gsub(/\s/, '-')}-austin")
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[3][0].gsub(/\s/, '-')}-austin",
+                  user_id: 8)
 
 Foodtruck.create!(name: foodtrucks[4][0],
                   cuisine: truck_type[4][0],
                   signature_item: foodtrucks[4][1],
                   truck_pic: (truck_type[4][1]).join,
-                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[4][0].gsub(/\s/, '-')}-austin")
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[4][0].gsub(/\s/, '-')}-austin",
+                  user_id: 8)
 
 Foodtruck.create!(name: foodtrucks[5][0],
                   cuisine: truck_type[2][0],
                   signature_item: foodtrucks[5][1],
                   truck_pic: (truck_type[2][1]).join,
-                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[5][0].gsub(/\s/, '-')}-austin")
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[5][0].gsub(/\s/, '-')}-austin",
+                  user_id: 8)
 
 Foodtruck.create!(name: foodtrucks[6][0],
                   cuisine: truck_type[7][0],
                   signature_item: foodtrucks[6][1],
                   truck_pic: HEYCUPCAKE.join,
-                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[6][0].gsub(/\s/, '-')}-austin")
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[6][0].gsub(/\s/, '-')}-austin",
+                  user_id: 8)
 
 Foodtruck.create!(name: foodtrucks[7][0],
                   cuisine: truck_type[5][0],
                   signature_item: foodtrucks[7][1],
                   truck_pic: GORDOUGHS.join,
-                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[7][0].gsub(/\s/, '-')}-austin")
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[7][0].gsub(/\s/, '-')}-austin",
+                  user_id: 8)
 
 Foodtruck.create!(name: foodtrucks[8][0],
                   cuisine: truck_type[15][0],
                   signature_item: foodtrucks[8][1],
                   truck_pic: CREOLE.join,
-                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[8][0].gsub(/\s/, '-')}-austin")
+                  yelp_url: "http://www.yelp.com/biz/#{foodtrucks[8][0].gsub(/\s/, '-')}-austin",
+                  user_id: 8)
 
 names = %w(
   Dane
