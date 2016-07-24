@@ -4,7 +4,7 @@ class FoodtrucksController < ApplicationController
 
   def index
     foodtrucks = Foodtruck.order(votes_count: :desc).page(params[:page])
-    render json: foodtrucks.to_json
+    render json: foodtrucks.to_json, status: 200
 
     # @foodtrucks = Foodtruck.all
     # render json: @foodtrucks.to_json
@@ -12,23 +12,28 @@ class FoodtrucksController < ApplicationController
   end
 
   def show
-    render json: @foodtruck
+    if @foodtruck
+      render json: @foodtruck, status: 200
+    else
+      render json: { message: "Not Found" }, status: 404
+    end
   # rescue ActiveRecord::RecordNotFound
   #   render json: { message: "Not found", status: 404 }, status: 404
   end
 
   def create
-    @foodtruck = Foodtruck.create!(foodtruck_params)
+    @foodtruck = Foodtruck.new(foodtruck_params)
     if @foodtruck.yelp_url == nil
       @foodtruck.yelp_url = truck_yelp
     end
     if @foodtruck.truck_pic == nil
       @foodtruck.truck_pic = truck_picchas
     end
-    # if @foodtruck.truck_pic == nil
-      # @foodtruck.truck_pic =
-    # end
-    render json: @foodtruck
+    if @foodtruck.save
+      render json: @foodtruck
+    else
+      render json: @foodtruck.errors
+    end
   # rescue ActiveRecord::RecordInvalid
   #   render json: { message: "Invalid Input", status: 400 }, status: 400
   # rescue ActiveRecord::RecordNotFound
@@ -37,7 +42,7 @@ class FoodtrucksController < ApplicationController
 
   def update
     @foodtruck.update(foodtruck_params)
-    render json: @foodtruck
+    render json: @foodtruck, status: 200
   # rescue ActiveRecord::RecordInvalid
   #   render json: { message: "Invalid Input", status: 400 }, status: 400
   end
@@ -46,8 +51,7 @@ class FoodtrucksController < ApplicationController
     foodtruck = Foodtruck.find(params[:id])
     if foodtruck
       if authenticate_token?(params.fetch(browser_auth_token))
-        render json: foodtruck.destroy
-        render json: "Foodtruck deleted."
+        render json: foodtruck.destroy, status: 200
       else
         render json: { message: "You are not authorized to do this." }, status: 401
       end
@@ -59,10 +63,10 @@ class FoodtrucksController < ApplicationController
   #   render json: { message: "Not found", status: 404 }, status: 404
   end
 
-  def voting_users
-    user_arr = get_users_for_vote
-    render json: user_arr.to_json(except: [:name, :username, :password_digest])
-  end
+  # def voting_users
+  #   user_arr = get_users_for_vote
+  #   render json: user_arr.to_json(except: [:name, :username, :password_digest])
+  # end
 
   private
   def get_foodtruck

@@ -5,32 +5,40 @@ class UsersController < ApplicationController
   def index
     # if authenticate_token?(params.fetch(browser_auth_token))
       users = User.page(params[:page])
-      render json: users.to_json
+      render json: users.to_json, status: 200
     # end
     # in views call <%= paginate @users %>
   end
 
   def show
-    render json: @user
+    if @user
+      render json: @user, status: 200
+    else
+      render json: { message: "Not Found" }, status: 404
+    end
   end
 
   def create
-    @user = User.create(user_params)
-    render json: @user
+    user = User.new(user_params)
+    if user.save
+      render json: user, status: 200
+    else
+      render json: { message: "Invalid Input: Must have a username and password" }, status: 400
+    end
   end
 
   def update
     @user.update(user_params)
-    render json: @user
+    render json: @user, status: 200
   end
 
   def destroy
-    render json: @user.destroy
+    render json: @user.destroy, status: 200
   end
 
   def get_favorites
     @favorites = get_user_favorites
-    render json: @favorites
+    render json: @favorites, status: 200
   end
 
   private

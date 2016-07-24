@@ -2,7 +2,11 @@ class VotesController < ApplicationController
   def create
     vote = Vote.new(vote_params)
     # user = User.find_by(params[:id])
-    vote.save
+    if vote.save
+      render json: vote, status: 200
+    else
+      render json: { message: "Invalid Input" }, status: 400
+    end
   end
 
   private

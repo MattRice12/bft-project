@@ -5,6 +5,7 @@ class User < ApplicationRecord
   before_create :set_auth_token
 
   validates :username, uniqueness: true, length: { minimum: 1, maximum: 50 }
+  validates :password, presence: true
 
   # def favorites
   #   Favorites.new
