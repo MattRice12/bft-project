@@ -69,6 +69,22 @@ foodtrucks = [["ATX Boudain Hut", "Boudain Balls"],       #0
              ["Baton Creole", "Jambalaya Baton"]          #8
             ]
 
+names = %w(
+  Dane
+  Justin
+  Matt
+  Rob
+  Kate
+  Ahkeem
+  Coop
+  Amanda
+  James
+)
+
+names.each do |name|
+  User.create!(name: name, username: "#{name}1", password: "password")
+end
+
 Foodtruck.create!(name: foodtrucks[0][0],
                   cuisine: truck_type[15][0],
                   signature_item: foodtrucks[0][1],
@@ -131,22 +147,6 @@ Foodtruck.create!(name: foodtrucks[8][0],
                   truck_pic: CREOLE.join,
                   yelp_url: "http://www.yelp.com/biz/#{foodtrucks[8][0].gsub(/\s/, '-')}-austin",
                   user_id: 8)
-
-names = %w(
-  Dane
-  Justin
-  Matt
-  Rob
-  Kate
-  Ahkeem
-  Coop
-  Amanda
-  James
-)
-
-names.each do |name|
-  User.create!(name: name, username: "#{name}1", password: "password")
-end
 
 100.times do
   vote = Vote.new(user_id: rand(1..8), foodtruck_id: rand(1..8), favorite_list: foodtrucks[rand(1-8)][0])
