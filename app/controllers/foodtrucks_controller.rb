@@ -42,7 +42,7 @@ class FoodtrucksController < ApplicationController
         render json: { message: "Invalid Input" }, status: 400
       end
     else
-      render json: { message: "Backend problems, probably" }, status: 500
+      render json: { message: "Internal Server Error" }, status: 500
     end
   end
 

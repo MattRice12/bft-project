@@ -1,55 +1,78 @@
-##Show all Food Trucks, 6 per page, ordered by vote count.
+##Shows all Food Trucks, 6 per page, ordered by vote count.
 URL: https://warm-brook-49316.herokuapp.com/foodtrucks
 
-Method: GET
+Methods: GET, CREATE, UPDATE, DELETE
 
 URL params: foodtrucks/:id #=> shows particular foodtruck
-  Example: foodtruck/1 #=> shows 1st foodtruck
-  Example: foodtruck/17 #=> shows 17th foodtruck
+  Example: foodtrucks/1 #=> shows 1st foodtruck
+  Example: foodtrucks/17 #=> shows 17th foodtruck
   Note--> the :id is set by order of creation, not by highest-vote (so :id = 1 will likely not correspond to the 1st foodtruck on the site)
 
-URL actions: ?page=[page-number]
-  Example: ?page=1 shows trucks 1-6 (this action is superfluous)
-  Example: ?page=2 shows trucks 7-12
+URL actions: foodtrucks?page=[page-number]
+  Example: foodtrucks?page=1 shows trucks 1-6 (this action is superfluous)
+  Example: foodtrucks?page=2 shows trucks 7-12
 
 Data Params:
   {
-    Foodtrucks : {
-      t.string   "name" null: false
-      t.string   "cuisine",                    null: false
-      t.string   "signature_item"
-      t.string   "truck_pic"
-      t.string   "yelp_url"
-      t.integer  "votes_count",    default: 0
-      t.datetime "created_at",                 null: false
-      t.datetime "updated_at",                 null: false
-      t.text     "comments"
-      t.integer  "user_id"
+    foodtrucks : {
+      name: [string]
+      cuisine: [string]
+      signature_item: [string]
+      truck_pic: [string]
+      yelp_url: [string]
+      votes_count: [integer]
+      user_id: [integer]
     }
   }
 
+  Success Response
+    Code: 200
 
-##Displays second 3 Food Trucks
-https://warm-brook-49316.herokuapp.com/foodtrucks?page=2
+  Error Response
+    Code: 400: { message: "Invalid Input" }
+    Code: 401: { message: "You are not authorized to take this action" }
+    Code: 404: { message: "Not Found" }
+    Code: 500: { message: "Internal Server Error" }
 
-
-##Displays specific Food Truck
-https://warm-brook-49316.herokuapp.com//foodtrucks/1
-
-
-  ##epic --> show 5 users who also liked this truck
-
-
-##Displays first 3 Users (ordered by top voters the most)
+______________________________________________________________________
+##Shows all Users, 6 per page
 https://warm-brook-49316.herokuapp.com/users
 
-##Displays specific User (w/ info: name, username, also_likes: [...])
-https://warm-brook-49316.herokuapp.com/users/1
+Methods: GET, CREATE, UPDATE, DELETE
 
+URL params: users/:id #=> shows particular users
+  Example: users/1 #=> shows 1st user
+  Example: users/17 #=> shows 17th user
+  Note--> the :id is set by order of creation, not by highest-vote (so :id = 1 will likely not correspond to the 1st user on the site)
+
+URL actions: users?page=[page-number]
+  Example: users?page=1 shows users 1-6 (this action is superfluous)
+  Example: users?page=2 shows users 7-12
+
+Data Params:
+  {
+    users : {
+      name: [string]
+      username: [string]
+      password_digest: [string]
+      favorites: [string]
+      auth_token: [string]
+      votes_count: [integer]
+    }
+  }
+
+Success Response
+  Code: 200
+
+Error Response
+  Code: 400: { message: "Invalid Input" }
+  Code: 401: { message: "You are not authorized to take this action" }
+  Code: 404: { message: "Not Found" }
+  Code: 500: { message: "Internal Server Error" }
+
+______________________________________________________________________
 ##Displays Sign Up page
 
-
 ##Displays Sign In page
-
 
 ##Users are restricted from doing anything except viewing the main Food Truck list
