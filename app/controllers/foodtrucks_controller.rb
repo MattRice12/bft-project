@@ -48,7 +48,7 @@ class FoodtrucksController < ApplicationController
 
   def destroy
     if @foodtruck
-      if authenticate_token?(params.fetch(browser_auth_token))
+      if authenticate_token?(params.fetch(:browser_auth_token))
         if foodtruck.user_id == user.id
           render json: @foodtruck.destroy, status: 200
         else
